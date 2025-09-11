@@ -44,7 +44,9 @@ The software system for control and data acquisition, used for the low-cost dida
 
 A general overview of the software system can be seen in the diagram shown in Figure 2. This diagram presents the two subsystems mentioned above.
 
-![software_overview.pdf](software_overview.pdf)
+![software_overview.png](software_overview.png)
+
+
 *Caption: General overview of the software structure formed by two subsystems: embedded software on the ESP32 platform; and a GUI executed on a microcomputer.*
 
 ---
