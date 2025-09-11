@@ -4,8 +4,9 @@
 
 ## Abstract
 
-This document describes the software system used with low-cost didactic plants being developed at 
-the Department of Electronic Engineering of the Federal University of Minas Gerais.
+This document describes the software system used with low-cost didactic plants being developed in 
+the Department of Electronic Engineering at the Federal University of Minas Gerais.
+These low-cost 3D print based plants make use of Arduino or ESP32 microprocessor systems.
 
 ---
 
@@ -16,6 +17,7 @@ In recent years, the cost of didactic systems for Control education has become a
 Simultaneously, the development cost of solutions using microprocessed systems, based on microcontrollers or other Systems-On-Chips (SoCs) like Arduino, ESP32, and Raspberry Pi, has decreased. This is also due to the lower cost of sensors and the use of parts manufactured via additive manufacturing of plastic materials in 3D printers.
 
 ![Aerogerador_TinkerCAD_captura_2.png](Aerogerador_TinkerCAD_captura_2.png)
+
 *Caption: Example of a developed didactic plant that uses the software system described in this document.*
 
 In this new context, it has become feasible to develop and produce many low-volume, low-weight, and low-cost didactic kits. These kits can accompany the academic journey of students in Control and Automation Engineering, Electrical Engineering, Systems Engineering, and other courses at the UFMG School of Engineering.
