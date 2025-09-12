@@ -34,7 +34,7 @@ void ControlSystem::set_sample_time(float new_ts) {
 }
 
 float ControlSystem::get_internal_param(int n) {
-  if (n > 0) && (n < CTRL_SYS_NPARAMS)
+  if ((n > 0) && (n < CTRL_SYS_NPARAMS))
     return internal_param[n];
   
   // Specific value that will signal an error.
@@ -42,11 +42,13 @@ float ControlSystem::get_internal_param(int n) {
 }
 
 void ControlSystem::set_internal_param(int n, float val) {
-  if (n > 0) && (n < CTRL_SYS_NPARAMS)
+  if ((n > 0) && (n < CTRL_SYS_NPARAMS))
     internal_param[n] = val;
 }
 
 ControlSystem::ControlSystem(void) {
+  unsigned char n;
+  
   // Zero = not specified.
   // Any nonzero value will represent other possibilities.
   ctrl_code_id = 0.0f;
