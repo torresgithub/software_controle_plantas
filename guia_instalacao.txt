@@ -72,3 +72,14 @@ ou  /dev/ttyACM0
 clicar no botão de "upload", marcado com "->", para compilar o código e programar
 o ESP32.
 
+9) Para rodar a GUI:
+    
+    9.1) Se não tiver ativado o ambiente virtual criado anteriormente:
+      Linux e MacOS: 
+         source ./lab_ctrl/bin/activate
+      Windows:
+         lab_ctrl\Scripts\activate.bat
+
+    9.2) Va para o diretório e execute o programa:
+        cd MotorDC/GUI_code
+        python -m Motor_GUI.py
