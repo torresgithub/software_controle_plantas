@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowMqxvsn.ui'
+## Form generated from reading UI file 'main_windowwXzQvn.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.2
 ##
@@ -416,14 +416,15 @@ class Ui_MainWindow(object):
 
         self.groupBox_deadzone_comp = QGroupBox(self.tab_general_config)
         self.groupBox_deadzone_comp.setObjectName(u"groupBox_deadzone_comp")
+        self.groupBox_deadzone_comp.setEnabled(True)
         sizePolicy.setHeightForWidth(self.groupBox_deadzone_comp.sizePolicy().hasHeightForWidth())
         self.groupBox_deadzone_comp.setSizePolicy(sizePolicy)
         self.groupBox_deadzone_comp.setMinimumSize(QSize(0, 220))
         self.groupBox_deadzone_comp.setCheckable(True)
-        self.groupBox_deadzone_comp.setChecked(False)
+        self.groupBox_deadzone_comp.setChecked(True)
         self.label_12 = QLabel(self.groupBox_deadzone_comp)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setEnabled(False)
+        self.label_12.setEnabled(True)
         self.label_12.setGeometry(QRect(260, 10, 161, 201))
         self.label_12.setPixmap(QPixmap(u":/images/GUI_resources/comp_dead-zone.png"))
         self.label_12.setScaledContents(False)
@@ -435,13 +436,13 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.label_19 = QLabel(self.layoutWidget)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setEnabled(False)
+        self.label_19.setEnabled(True)
 
         self.gridLayout_2.addWidget(self.label_19, 0, 0, 1, 1)
 
         self.spinBox_Cp = QSpinBox(self.layoutWidget)
         self.spinBox_Cp.setObjectName(u"spinBox_Cp")
-        self.spinBox_Cp.setEnabled(False)
+        self.spinBox_Cp.setEnabled(True)
         self.spinBox_Cp.setMaximum(255)
         self.spinBox_Cp.setValue(144)
 
@@ -449,13 +450,13 @@ class Ui_MainWindow(object):
 
         self.label_20 = QLabel(self.layoutWidget)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setEnabled(False)
+        self.label_20.setEnabled(True)
 
         self.gridLayout_2.addWidget(self.label_20, 1, 0, 1, 1)
 
         self.spinBox_Cn = QSpinBox(self.layoutWidget)
         self.spinBox_Cn.setObjectName(u"spinBox_Cn")
-        self.spinBox_Cn.setEnabled(False)
+        self.spinBox_Cn.setEnabled(True)
         self.spinBox_Cn.setMinimum(-255)
         self.spinBox_Cn.setMaximum(0)
         self.spinBox_Cn.setValue(-139)
@@ -958,10 +959,6 @@ class Ui_MainWindow(object):
 "\n"
 "// Ensaio em malha aberta: envia o valor de comando PWM,\n"
 "// alterado via interface grafica, diretamente para o motor BLDC NIDEC.\n"
-"\n"
-"// Proximo valor a ser enviado para a entrada,\n"
-"// como alterado na GUI:\n"
-"ref[0] = RefSteps.get(t);\n"
 "\n"
 "// Aplica o valor diretamente na entrada do sistema\n"
 "u[0] = ref[0];\n"

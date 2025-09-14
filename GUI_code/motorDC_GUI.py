@@ -50,6 +50,10 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.reference_input = "manual"
         self.radioButton_manual.setChecked(True)
 
+        # No dead-zone compensation.
+        self.groupBox_deadzone_comp.setChecked(False)
+        
+        # For the custom controller, select an open-loop strategy.
         self.comboBox_ctrl_code.setCurrentIndex(0)
         
         # Prevents editing of the sample time spin box directly using the keyboard.
@@ -439,14 +443,12 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
       
         # Process the text in the Edit line as if it was a mathematical expression,
         # while ignoring letters.
-        expression = self.lineEdit_manual_input.displayText()
-        r = ''.join(filter(lambda x: x.isdigit() or x == '.' or x == '-' or x == '+' or x == '*' or x == '/',expression))
-
-        try:
-            value = eval(r)
+        value, ok = self.process_value_from_text(self.lineEdit_manual_input.displayText())
+    
+        if ok:
             self.lineEdit_manual_input.setText(str(value))
             self.horizontalSlider_manual_input.setValue(value)
-        except:
+        else:
             self.horizontalSlider_manual_input.setValue(0)
             self.lineEdit_manual_input.setText("0")
 
