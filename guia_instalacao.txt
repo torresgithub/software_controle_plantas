@@ -9,11 +9,15 @@
         python -m venv lab_ctrl
         source ./lab_ctrl/bin/activate
 
+    No Windows (Terminal):
+        python -m venv lab_ctrl
+        lab_ctrl\Scripts\activate.bat
+
 2) Instalar pacotes Python
 
     pip install pyside6 numpy pyserial
 
-            ** Erro 1: ao rodar a GUI logo depois dos passos acima:
+            ** Erro no Linux Mint: ao rodar a GUI logo depois dos passos acima:
 
             qt.qpa.plugin: From 6.5.0, xcb-cursor0 or libxcb-cursor0 is needed to load the Qt xcb platform plugin.
             qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found.
@@ -61,12 +65,12 @@ Isso abrirá todos os arquivos do código embarcado.
     ESP32-WROOM-DA
 ou  WEMOS D1 R32 (se a placa é maior, mais parecida com a de um Arduino Uno).
 
-Verifique também se a porta serial foi detectada corretamente.
-No Linux, dependendo do tipo de chip USB-Serial usado na placa ESP32,
-será criado um arquivo:
+Verifique também se a porta serial foi detectada corretamente 
+pela aplicação Arduino IDE. No Linux, dependendo do tipo de chip 
+USB-Serial usado na placa ESP32, será criado um arquivo:
 
-    /dev/ttyUSB0
-ou  /dev/ttyACM0
+    /dev/ttyUSB0, ou /dev/ttyUSB1, ou ...
+ou  /dev/ttyACM0, ou /dev/ttyACM1, ou ...
 
 8) Uma vez que a placa certa e a porta serial correta estejam selecionadas.
 clicar no botão de "upload", marcado com "->", para compilar o código e programar
@@ -74,12 +78,13 @@ o ESP32.
 
 9) Para rodar a GUI:
     
-    9.1) Se não tiver ativado o ambiente virtual criado anteriormente:
+    9.1) Se ainda não estiver ativado o ambiente virtual criado anteriormente:
       Linux e MacOS: 
          source ./lab_ctrl/bin/activate
       Windows:
          lab_ctrl\Scripts\activate.bat
 
-    9.2) Va para o diretório e execute o programa:
+    9.2) Va para o diretório "GUI_code" e execute o programa:
+
         cd MotorDC/GUI_code
         python -m Motor_GUI.py
