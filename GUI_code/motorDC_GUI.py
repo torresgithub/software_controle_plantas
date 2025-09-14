@@ -232,6 +232,9 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.widget_plot_1.setXRange(0,self.verticalSlider_TimeWindow.value(),padding=0)
         self.widget_plot_2.setXRange(0,self.verticalSlider_TimeWindow.value(),padding=0)
         
+        # Clear the message area:
+        self.plainTextEdit_message_area.clear()
+        
         self.set_deadzone_compensation()
         self.set_controlled_variable()
         self.set_control_code()
@@ -281,24 +284,28 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             if self.radioButton_PID_s.isChecked():
                 
+                self.plainTextEdit_message_area.appendPlainText("Estratégia de Controle escolhida: PID em 's'.")    
+                
                 kp,_ = self.process_value_from_text(self.lineEdit_ct_kp.displayText())
+                self.plainTextEdit_message_area.appendPlainText(f"Ganho proporcional: kp = {kp}")
                 
                 if self.groupBox_ct_ti.isChecked():
                     ti,_ = self.process_value_from_text(self.lineEdit_ct_ti.displayText())
                 else:
                     ti = 0.0
+                self.plainTextEdit_message_area.appendPlainText(f"Tempo Integral: Ti = {ti}")
+                
                     
                 if self.groupBox_ct_ti.isChecked():
                     td,_ = self.process_value_from_text(self.lineEdit_ct_td.displayText())
                 else:
                     td = 0.0
+                self.plainTextEdit_message_area.appendPlainText(f"Tempo Derivativo: Td = {td}")
                     
                 self.comm_agent.send_command(cmd_messages['set_ctrl_sys_param'],cmd_val1=ctrl_sys_params['ctrl_sys_param_kp'],cmd_val2=kp)
                 self.comm_agent.send_command(cmd_messages['set_ctrl_sys_param'],cmd_val1=ctrl_sys_params['ctrl_sys_param_ti'],cmd_val2=ti)
                 self.comm_agent.send_command(cmd_messages['set_ctrl_sys_param'],cmd_val1=ctrl_sys_params['ctrl_sys_param_td'],cmd_val2=td)
                 self.comm_agent.send_command(cmd_messages['set_ctrl_code'],cmd_val1=ctrl_code['ctrl_pid_ct'])
-                
-                self.plainTextEdit_message_area.appendPlainText("\nEstratégia de Controle escolhida: PID em 's'.")    
         
     def send_cmd_manual_input_change(self):
 
@@ -311,13 +318,14 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.lineEdit_manual_input.setText(str(value))
         
     def process_value_from_text(self, expression):
+        # Replace comma with dot to force the usage of dot to represent decimal separator.
+        expression = expression.replace(',','.')
+        
         # Process the text  as if it was a mathematical expression,
         # while ignoring letters.
         r = ''.join(filter(lambda x: x.isdigit() or x == '.' or x == '-' or x == '+' or x == '*' or x == '/',expression))
         try:
             val = eval(r)
-            # Send the command message to change the manual input reference.
-            self.comm_agent.send_command(cmd_messages['set_ref'],cmd_val2=val)
         except:
             return 0.0, False
             
@@ -488,6 +496,9 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.reference_input = "programmed"
             self.groupBox_manual_input.setDisabled(True)
             self.tableWidget_prog_input.setDisabled(False)
+            # Write here the code for sending the programmed reference or input values
+            # to the ESP32 embedded code. (September, the 13th, 2025).
+            
         self.configure_GUI_experiment()
 
     @QtCore.Slot()

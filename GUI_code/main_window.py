@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowvwKiQX.ui'
+## Form generated from reading UI file 'main_windowMqxvsn.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.2
 ##
@@ -341,6 +341,7 @@ class Ui_MainWindow(object):
 
         self.radioButton_open_loop = QRadioButton(self.groupBox_controller_choice)
         self.radioButton_open_loop.setObjectName(u"radioButton_open_loop")
+        self.radioButton_open_loop.setChecked(True)
 
         self.verticalLayout_12.addWidget(self.radioButton_open_loop)
 
@@ -352,7 +353,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.radioButton_PID_s.sizePolicy().hasHeightForWidth())
         self.radioButton_PID_s.setSizePolicy(sizePolicy1)
-        self.radioButton_PID_s.setChecked(True)
+        self.radioButton_PID_s.setChecked(False)
 
         self.verticalLayout_12.addWidget(self.radioButton_PID_s)
 
@@ -419,10 +420,10 @@ class Ui_MainWindow(object):
         self.groupBox_deadzone_comp.setSizePolicy(sizePolicy)
         self.groupBox_deadzone_comp.setMinimumSize(QSize(0, 220))
         self.groupBox_deadzone_comp.setCheckable(True)
-        self.groupBox_deadzone_comp.setChecked(True)
+        self.groupBox_deadzone_comp.setChecked(False)
         self.label_12 = QLabel(self.groupBox_deadzone_comp)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setEnabled(True)
+        self.label_12.setEnabled(False)
         self.label_12.setGeometry(QRect(260, 10, 161, 201))
         self.label_12.setPixmap(QPixmap(u":/images/GUI_resources/comp_dead-zone.png"))
         self.label_12.setScaledContents(False)
@@ -434,13 +435,13 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.label_19 = QLabel(self.layoutWidget)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setEnabled(True)
+        self.label_19.setEnabled(False)
 
         self.gridLayout_2.addWidget(self.label_19, 0, 0, 1, 1)
 
         self.spinBox_Cp = QSpinBox(self.layoutWidget)
         self.spinBox_Cp.setObjectName(u"spinBox_Cp")
-        self.spinBox_Cp.setEnabled(True)
+        self.spinBox_Cp.setEnabled(False)
         self.spinBox_Cp.setMaximum(255)
         self.spinBox_Cp.setValue(144)
 
@@ -448,13 +449,13 @@ class Ui_MainWindow(object):
 
         self.label_20 = QLabel(self.layoutWidget)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setEnabled(True)
+        self.label_20.setEnabled(False)
 
         self.gridLayout_2.addWidget(self.label_20, 1, 0, 1, 1)
 
         self.spinBox_Cn = QSpinBox(self.layoutWidget)
         self.spinBox_Cn.setObjectName(u"spinBox_Cn")
-        self.spinBox_Cn.setEnabled(True)
+        self.spinBox_Cn.setEnabled(False)
         self.spinBox_Cn.setMinimum(-255)
         self.spinBox_Cn.setMaximum(0)
         self.spinBox_Cn.setValue(-139)
@@ -920,10 +921,10 @@ class Ui_MainWindow(object):
         self.lineEdit_ct_ti.setText(QCoreApplication.translate("MainWindow", u"10", None))
         self.groupBox_ct_td.setTitle(QCoreApplication.translate("MainWindow", u"A\u00e7\u00e3o Derivativa (pode ser desabilitada)", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"Td, em [seg] :", None))
-        self.lineEdit_ct_td.setText(QCoreApplication.translate("MainWindow", u"0,1", None))
+        self.lineEdit_ct_td.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"A\u00e7\u00e3o Proporcional", None))
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Kp :", None))
-        self.lineEdit_ct_kp.setText(QCoreApplication.translate("MainWindow", u"0,23", None))
+        self.lineEdit_ct_kp.setText(QCoreApplication.translate("MainWindow", u"1", None))
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"Ex.: Kp = 2 indica que, supondo apenas a\u00e7\u00e3o proporcional,\n"
 "PWM = 2, quando erro = 1 [deg] (ou 1 [deg/s]).", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_PID_controller), QCoreApplication.translate("MainWindow", u"PID em \"s\"", None))

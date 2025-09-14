@@ -737,6 +737,9 @@ com o Sistema</string>
                    <property name="text">
                     <string>Malha Aberta</string>
                    </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -754,7 +757,7 @@ com o Sistema</string>
                     <string>PID em &quot;s&quot;</string>
                    </property>
                    <property name="checked">
-                    <bool>true</bool>
+                    <bool>false</bool>
                    </property>
                   </widget>
                  </item>
@@ -883,11 +886,11 @@ com o Sistema</string>
                <bool>true</bool>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <widget class="QLabel" name="label_12">
                <property name="enabled">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="geometry">
                 <rect>
@@ -920,7 +923,7 @@ com o Sistema</string>
                 <item row="0" column="0">
                  <widget class="QLabel" name="label_19">
                   <property name="enabled">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                   <property name="text">
                    <string>Cp :</string>
@@ -930,7 +933,7 @@ com o Sistema</string>
                 <item row="0" column="1">
                  <widget class="QSpinBox" name="spinBox_Cp">
                   <property name="enabled">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                   <property name="maximum">
                    <number>255</number>
@@ -943,7 +946,7 @@ com o Sistema</string>
                 <item row="1" column="0">
                  <widget class="QLabel" name="label_20">
                   <property name="enabled">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                   <property name="text">
                    <string>Cn :</string>
@@ -953,7 +956,7 @@ com o Sistema</string>
                 <item row="1" column="1">
                  <widget class="QSpinBox" name="spinBox_Cn">
                   <property name="enabled">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                   <property name="minimum">
                    <number>-255</number>
@@ -1105,7 +1108,7 @@ com o Sistema</string>
               </rect>
              </property>
              <property name="text">
-              <string>0,1</string>
+              <string>0</string>
              </property>
             </widget>
            </widget>
@@ -1147,7 +1150,7 @@ com o Sistema</string>
               </rect>
              </property>
              <property name="text">
-              <string>0,23</string>
+              <string>1</string>
              </property>
             </widget>
             <widget class="QLabel" name="label_22">

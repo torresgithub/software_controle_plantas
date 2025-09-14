@@ -34,7 +34,7 @@ void ControlSystem::set_sample_time(float new_ts) {
 }
 
 float ControlSystem::get_internal_param(unsigned int n) {
-  if ((n > 0) && (n < CTRL_SYS_NPARAMS))
+  if ((n >= 0) && (n < CTRL_SYS_NPARAMS))
     return internal_param[n];
   
   // Specific value that will signal an error.
@@ -42,7 +42,7 @@ float ControlSystem::get_internal_param(unsigned int n) {
 }
 
 void ControlSystem::set_internal_param(unsigned int n, float val) {
-  if ((n > 0) && (n < CTRL_SYS_NPARAMS))
+  if ((n >= 0) && (n < CTRL_SYS_NPARAMS))
     internal_param[n] = val;
 }
 
@@ -133,6 +133,9 @@ int ControlSystem::run(float t)
     measure_signals(t);
     meas_last_t = t;
 
+    // Get the reference value:
+    ref[0] = RefSteps.get(t);
+
     retval = run_controller_code(t);
     if (retval) {
       // Effectively changes the control action
@@ -161,11 +164,6 @@ int ControlSystem::run(float t)
 
 int ControlSystem::ctrl_open_loop(float t) 
 {
-  // Value to be applied to the system input 
-  // is equal to the last one that was sent 
-  // by the GUI:
-  ref[0] = RefSteps.get(t);
-
   // Connects reference to input directly:
   u[0] = ref[0];
 
@@ -182,9 +180,9 @@ int ControlSystem::ctrl_pid_ct(float t)
   //                   atenuacao em altas frequencias mais efetiva do
   //                   que o que se obtem via transformacao bilinear)
 
-  const float kp = internal_param[CTRL_SYS_PARAM_KP]; 
-  const float Ti = internal_param[CTRL_SYS_PARAM_TI];
-  const float Td = internal_param[CTRL_SYS_PARAM_TD];
+  float kp = internal_param[CTRL_SYS_PARAM_KP]; 
+  float Ti = internal_param[CTRL_SYS_PARAM_TI];
+  float Td = internal_param[CTRL_SYS_PARAM_TD];
 
   // Actual Sample time:
   float ts;
@@ -202,7 +200,7 @@ int ControlSystem::ctrl_pid_ct(float t)
   // Compute the output:
   if (Ti > 0.0f)
     u[0] = kp*(e + 1/Ti*(ts/2.0f*e + xc[0]) + Td/ts*(e - xc[1]));
-  else	
+  else
     u[0] = kp*(e + Td/ts*(e - xc[1]));
 
   // Update controller internal states:
