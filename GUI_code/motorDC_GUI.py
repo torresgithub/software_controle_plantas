@@ -236,8 +236,9 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.widget_plot_1.setXRange(0,self.verticalSlider_TimeWindow.value(),padding=0)
         self.widget_plot_2.setXRange(0,self.verticalSlider_TimeWindow.value(),padding=0)
         
-        # Clear the message area:
-        self.plainTextEdit_message_area.clear()
+        
+        # Display the following information in the message area:
+        self.plainTextEdit_message_area.setPlainText("Configurando o experimento...")
         
         self.set_deadzone_compensation()
         self.set_controlled_variable()
@@ -274,10 +275,10 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def set_controlled_variable(self):
         
         if self.radioButton_position.isChecked():
-            self.plainTextEdit_message_area.appendPlainText('\nVariável Controlada escolhida: Posição.')
+            self.plainTextEdit_message_area.appendPlainText('Variável Controlada escolhida: Posição.')
             self.comm_agent.send_command(cmd_messages['set_ctrl_variable'],cmd_val1=ctrl_var['position'])
         else:
-            self.plainTextEdit_message_area.appendPlainText('\nVariável Controlada escolhida: Velocidade.')
+            self.plainTextEdit_message_area.appendPlainText('Variável Controlada escolhida: Velocidade.')
             self.comm_agent.send_command(cmd_messages['set_ctrl_variable'],cmd_val1=ctrl_var['speed'])
     
     def set_control_code(self):
@@ -340,12 +341,12 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             Cn = self.spinBox_Cn.value()
             Cp = self.spinBox_Cp.value()
             self.comm_agent.send_command(cmd_messages['set_deadzone_comp'],cmd_val1=float(Cn),cmd_val2=float(Cp))
-            self.plainTextEdit_message_area.appendPlainText(f"\nCompensação de Zona morta ativada: Cn = {Cn} e Cp = {Cp}.")
+            self.plainTextEdit_message_area.appendPlainText(f"Compensação de Zona morta ativada: Cn = {Cn} e Cp = {Cp}.")
         else:
             Cn = 0.0
             Cp = 0.0
             self.comm_agent.send_command(cmd_messages['set_deadzone_comp'],cmd_val1=float(Cn),cmd_val2=float(Cp))
-            self.plainTextEdit_message_area.appendPlainText(f"\nCompensação de Zona morta desabilitada.")
+            self.plainTextEdit_message_area.appendPlainText(f"Compensação de Zona morta desabilitada.")
     
     def save_data(self):
 
@@ -372,7 +373,7 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     
                     np.savetxt(filename,data_array[0:data_count,:],
                             delimiter=',',fmt="%1.8e",
-                            header="Descricao das colunas de dados:\nTempo (s), saida medida, acao de controle, referencia")
+                            header="Descricao das colunas de dados:\nTempo (s), posicao [deg], velocidade [deg/s], acao de controle, referencia")
                     msgBox = QtWidgets.QErrorMessage(self)
                     msgBox.setModal(True)
                     msgBox.showMessage("Dados salvos! ;-)")
@@ -569,12 +570,14 @@ class GUIWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
     @QtCore.Slot()
     def on_lineEdit_ct_ti_returnPressed(self):
-        ti,_ = self.process_value_from_text(self.lineEdit_ct_ti.displayText())    
+        ti,_ = self.process_value_from_text(self.lineEdit_ct_ti.displayText())
+        ti = abs(ti)    
         self.lineEdit_ct_ti.setText(str(ti))
         
     @QtCore.Slot()
     def on_lineEdit_ct_td_returnPressed(self):
         td,_ = self.process_value_from_text(self.lineEdit_ct_td.displayText())    
+        td = abs(td)
         self.lineEdit_ct_kp.setText(str(td))
     
     
